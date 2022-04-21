@@ -3,11 +3,18 @@ FROM nvidia/cuda:11.0-base
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 
-RUN apt-get update && apt install -y openssh-server vim git wget && rm -rf /var/lib/apt/lists/*
+ENV TZ=Asia/Shanghai
 
-RUN wget \
-    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-    && mkdir /root/.conda \
+ADD sources.list /etc/apt/
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y openssh-server vim git wget && rm -rf /var/lib/apt/lists/*
+
+#RUN wget \
+#    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+
+ADD Miniconda3-latest-Linux-x86_64.sh .
+
+RUN  mkdir /root/.conda \
     && bash Miniconda3-latest-Linux-x86_64.sh -b \
     && rm -f Miniconda3-latest-Linux-x86_64.sh 
 
