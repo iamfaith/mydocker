@@ -10,7 +10,7 @@ ENV TZ=Asia/Shanghai
 ADD sources.list /etc/apt/sources.list
 
 # RUN apt-get update && apt install -y openssh-server && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y openssh-server vim git wget && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y openssh-server vim git wget iputils-ping telnet supervisor sudo && rm -rf /var/lib/apt/lists/*
 
 #RUN wget \
 #    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
