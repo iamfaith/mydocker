@@ -1,0 +1,18 @@
+version: '3.0'
+
+services:
+  app:
+    # image: 
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "9286:22"
+    # volumes:
+    #   - ./container:/debug
+    container_name: octo
+    entrypoint:
+      ["/bin/bash", "-c", "/bin/bash /opt/start.sh"]
+
+  
