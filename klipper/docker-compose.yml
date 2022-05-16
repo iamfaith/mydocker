@@ -9,11 +9,11 @@ services:
     restart: always
     ports:
       - "9222:22"
-      - "9080:80"
+      - "9180:80"
     devices:
     # use `python -m serial.tools.miniterm` to see what the name is of the printer
       - /dev/ttyUSB0:/dev/ttyACM0
-
+      - /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
     volumes:
       - ./container:/debug
       - octoprint:/octoprint
