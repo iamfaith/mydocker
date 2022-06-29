@@ -2,3 +2,7 @@ Miniconda3-latest-Linux-x86_64.sh
 *.zip
 *.hex
 *.bin
+torch/
+*.tar.gz
+data/
+*.log

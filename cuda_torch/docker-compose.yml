@@ -1,0 +1,27 @@
+version: '3.0'
+
+services:
+  app:
+    # image: xianzixiang/cuda11:torch
+    build:
+      context: .
+      dockerfile: ./cuda.Dockerfile
+    restart: always
+    # runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+            devices:
+              - driver: nvidia
+                # count: 1
+                capabilities: [gpu]
+    ports:
+    - "9286:22"
+    - "8099:8099"
+    volumes:
+      - "./data:/code"
+    container_name: cuda11
+    entrypoint:
+      ["/bin/bash", "-c", "/bin/bash /opt/start.sh"]
+
+  
