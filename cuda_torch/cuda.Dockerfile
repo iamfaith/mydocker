@@ -1,5 +1,5 @@
-# FROM  xianzixiang/cuda11:torch
-FROM xianzixiang/torch_cuda11
+# FROM xianzixiang/torch_cuda11
+FROM xianzixiang/t_cuda11
 
 ADD ./container /opt
 
