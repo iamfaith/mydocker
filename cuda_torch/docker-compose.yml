@@ -21,6 +21,10 @@ services:
     volumes:
       - "./data:/code"
     container_name: cuda11
+    environment:
+      - CMD_CLIENT_PORT=6655
+      - CMD_WORKER_PORT=6656
+      - CMD_PYTHON_PATH=/torch/bin/python
     entrypoint:
       ["/bin/bash", "-c", "/bin/bash /opt/start.sh"]
 
