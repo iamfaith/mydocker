@@ -7,6 +7,6 @@ ls /etc/supervisor/conf.d
 cp -rf /opt/supervisord/code.conf /etc/supervisor/conf.d
 
 
-/torch/bin/python -m pip install aicmder==0.5.1
+/torch/bin/python -m pip install aicmder==0.5.2
 
 /usr/bin/supervisord -c /etc/supervisor/conf.d/code.conf
