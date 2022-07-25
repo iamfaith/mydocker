@@ -17,7 +17,7 @@ services:
                 capabilities: [gpu]
     ports:
     - "9286:22"
-    - "8099:8099"
+    - "8199:8099"
     volumes:
       - "./data:/code"
     container_name: cuda11
