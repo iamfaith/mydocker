@@ -23,4 +23,11 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 
 sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
+
+
+if install error: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A4B469963BF863CC
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
 ```
+
+
