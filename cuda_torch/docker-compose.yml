@@ -20,6 +20,7 @@ services:
     - "8199:8099"
     volumes:
       - "./data:/code"
+      - "./ssh:/root/.ssh/"
     container_name: cuda11
     environment:
       - CMD_CLIENT_PORT=6655
