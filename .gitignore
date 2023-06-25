@@ -6,3 +6,7 @@ torch/
 *.tar.gz
 data/
 *.log
+screenlog.*
+langchain
+py
+embedding_models
