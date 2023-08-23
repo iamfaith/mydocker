@@ -5,9 +5,9 @@ services:
     # image: 
     build:
       context: .
-      # dockerfile: ./cuda.Dockerfile
+      dockerfile: ./cuda.Dockerfile  #### built
       # dockerfile: ./ubuntu.Dockerfile
-      dockerfile: ./Dockerfile
+      # dockerfile: ./Dockerfile    #### no build
     restart: always
     # runtime: nvidia
     ######################################  origin: gpu

@@ -6,7 +6,9 @@
 docker run -itd  --rm --gpus all --name cuda -p 9823:22 nvidia/cuda:11.0-base
 2. docker stop rm
 3. docker build -t xianzixiang/cuda11 . 
+   docker build -t xianzixiang/pytorch:23.04-py3 .
 4. docker push xianzixiang/cuda11
+   docker push xianzixiang/pytorch:23.04-py3
 5. modify docker-compose(volume), supervisor app.conf
 
 
@@ -32,6 +34,9 @@ os.environ["CMD_PYTHON_PATH"] = "/py/bin/python"
 
 cd /code
 /py/bin/python /code/chatbot.py
+
+cd /code/dist
+/py/bin/python chatbot.py
 
 
 checkgpu:
