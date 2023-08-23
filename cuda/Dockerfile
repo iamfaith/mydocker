@@ -1,5 +1,10 @@
-FROM nvidia/cuda:11.0-base
+# FROM nvidia/cuda:11.0-base
+FROM nvcr.io/nvidia/pytorch:23.04-py3
 # FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+
+ADD ./container /opt
+
+USER root
 
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
@@ -7,10 +12,14 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 ENV TZ=Asia/Shanghai
 
 # ADD sources.list /etc/apt/sources.list_bak
-ADD sources.list /etc/apt/sources.list
+# ADD sources.list /etc/apt/sources.list
 
 # RUN apt-get update && apt install -y openssh-server && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y openssh-server vim git wget iputils-ping telnet supervisor sudo && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt install -y openssh-server vim git wget iputils-ping telnet supervisor sudo 
+# && rm -rf /var/lib/apt/lists/*
+
+#### other package && application needed
+RUN apt-get install -y libgl1
 
 #RUN wget \
 #    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \

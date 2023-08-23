@@ -6,26 +6,30 @@ services:
     build:
       context: .
       # dockerfile: ./cuda.Dockerfile
-      dockerfile: ./ubuntu.Dockerfile
+      # dockerfile: ./ubuntu.Dockerfile
+      dockerfile: ./Dockerfile
     restart: always
     # runtime: nvidia
     ######################################  origin: gpu
-    # deploy:
-    #   resources:
-    #     reservations:
-    #         devices:
-    #           - driver: nvidia
-    #             # count: 1
-    #             capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+            devices:
+              - driver: nvidia
+                # count: 1
+                capabilities: [gpu]
     ######################################  origin: gpu
     ports:
       - "${SSH_PORT}:22"
+      - "8099:8099"
     volumes:
       - ./langchain:/code
       - ./py:/py
       # ln -s /home/faith/miniconda3 /py
       - ./embedding_models:/code/embedding_models
       # ln -s /home/faith/.cache/torch/sentence_transformers/ embedding_models
+      - ./model:/model
+      # ln -s /home/faith/chatglm2-6b model
     container_name: cuda11
     env_file:
       - ./.env
